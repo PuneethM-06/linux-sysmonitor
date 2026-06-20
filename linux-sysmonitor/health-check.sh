@@ -6,5 +6,19 @@
 
 set -euo pipefail
 
-LOGFILE=logs/$(date +"%Y-%m-%d-%H-%M").log
-echo "$LOGFILE"
+LOGFILE="logs/$(date +"%Y-%m-%d-%H-%M").log"
+
+if [ -d logs ]; then
+    :
+else
+    mkdir -p logs
+fi 
+
+write_log() {
+
+    level="$1"
+    message="$2"
+    timestamp="$(date +"%Y-%m-%d %H:%M:%S")"
+    echo "$timestamp | $level | $message" >> $LOGFILE
+}
+write_log "INFO" "TEST MESSAGE" 
