@@ -5,3 +5,6 @@
 # Output: logs/health-YYYY-MM-DD-HH-MM.log
 
 set -euo pipefail
+
+LOGFILE=$(date +"%Y-%m-%d-%H-%M").log
+echo "$LOGFILE"
