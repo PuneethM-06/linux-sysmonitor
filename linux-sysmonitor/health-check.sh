@@ -6,5 +6,5 @@
 
 set -euo pipefail
 
-LOGFILE=$(date +"%Y-%m-%d-%H-%M").log
+LOGFILE=logs/$(date +"%Y-%m-%d-%H-%M").log
 echo "$LOGFILE"
