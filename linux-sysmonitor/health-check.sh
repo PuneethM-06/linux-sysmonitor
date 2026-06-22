@@ -30,11 +30,11 @@ check_cpu() {
     int_CPU_USAGE=$(awk "BEGIN{print int($CPU_USAGE)}")
 
     if [ $int_CPU_USAGE -lt 70 ]; then 
-        write_log "INFO" "CPU usage is $int_CPU_USAGE% - healthy"
-    elif [[ $int_CPU_USAGE  -ge 70 && $int_CPU_USAGE  -le 90 ]]; then
-        write_log "WARNING" "CPU usage is $int_CPU_USAGE% - above threshold" 
+        write_log "INFO" "CPU usage is $int_CPU_USAGE% — healthy"
+    elif [[ $int_CPU_USAGE  -ge 70 && $int_CPU_USAGE  -lt 90 ]]; then
+        write_log "WARNING" "CPU usage is $int_CPU_USAGE% — above threshold" 
     else
-    write_log "CRITICAL" "CPU usage is $int_CPU_USAGE% - immediate attention"
+    write_log "CRITICAL" "CPU usage is $int_CPU_USAGE% — immediate attention"
     fi
 
 }
