@@ -57,7 +57,7 @@ check_memory
 
 disk_check() {
     DISK_MEM_VALUE=$(df -h /| grep "overlay" | awk '{print $5}' | sed 's/%//')
-    if [ $DISK_MEM_VALUE < 80 ]; then 
+    if [ $DISK_MEM_VALUE -lt 80 ]; then 
         write_log "INFO" "Disk usage is $DISK_MEM_VALUE% — healthy"
     elif [[ $DISK_MEM_VALUE -ge 80 && $DISK_MEM_VALUE -lt 95 ]]; then 
         write_log "WARNING" "Disk usage is $DISK_MEM_VALUE% — above threshold"
