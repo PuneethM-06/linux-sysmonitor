@@ -41,5 +41,7 @@ check_cpu() {
 check_cpu
 
 check_memory() {
-    
+    MEM=$(free | grep "Mem" | awk '{print $3}')
+    echo "$MEM"
 }
+check_memory
