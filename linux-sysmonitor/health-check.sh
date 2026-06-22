@@ -4,7 +4,7 @@
 # Usage: ./health-check.sh
 # Output: logs/health-YYYY-MM-DD-HH-MM.log
 
-set -euo pipefail
+set -uo pipefail
 LOGFILE="logs/$(date +"%Y-%m-%d-%H-%M").log"
 
 
@@ -101,3 +101,9 @@ check_network () {
     fi
 }
 check_network
+
+check_ports (){
+    PORTS=$(ss -tlnp | awk '{print $4}'| awk -F':' '{print $2}')
+    echo "$PORTS"
+}
+check_ports
