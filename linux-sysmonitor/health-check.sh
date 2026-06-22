@@ -54,3 +54,10 @@ check_memory() {
     fi
 }
 check_memory
+
+disk_check() {
+    DISK_MEM=$(df -h /| grep "overlay" | awk '{print $5}')
+    echo "$DISK_MEM"
+    
+}
+disk_check
