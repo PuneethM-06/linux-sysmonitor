@@ -4,7 +4,7 @@
 # Usage: ./health-check.sh
 # Output: logs/health-YYYY-MM-DD-HH-MM.log
 
-set -euo pipefail
+set -uo pipefail
 LOGFILE="logs/$(date +"%Y-%m-%d-%H-%M").log"
 
 
@@ -101,3 +101,19 @@ check_network () {
     fi
 }
 check_network
+
+check_ports (){
+    PORTS=$(ss -tlnp | awk '{print $4}'| awk -F':' '{print $2}' | paste -sd ' ' -)
+    write_log "INFO" "Listening ports: $PORTS"
+}
+check_ports
+
+check_syslogs () {
+    if [ -f /var/log/syslog ]; then
+        LOGS=$(tail -n 10 /var/log/syslog)
+    else
+        LOGS=$(journalctl -n 10 --no-pager)
+    fi
+    write_log "INFO" "Recent System logs: $LOGS"
+}
+check_syslogs
