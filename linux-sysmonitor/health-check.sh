@@ -66,3 +66,26 @@ disk_check() {
     fi
 }
 disk_check
+
+check_process () {
+    if  pgrep -x sshd ; then
+        write_log "INFO" "sshd is running"
+    else
+        write_log "WARNING" "sshd is not running"
+    fi
+
+    if pgrep -x cron; then 
+        write_log "INFO" "cron is running"
+    else
+        write_log "WARNING" "cron is not running"
+    fi
+
+}
+check_process
+
+check_top_processes() {
+    TOP_PROCESS=$(ps -eo comm,pcpu | sort -rnk 2,2 | head -n 5 | awk '{print $1 "(" $2 "%)"}' | paste -sd ' ' -)
+    write_log "INFO" "Top CPU processes: $TOP_PROCESS"
+    
+}
+check_top_processes
