@@ -82,3 +82,10 @@ check_process () {
 
 }
 check_process
+
+check_top_processes() {
+    TOP_PROCESS=$(ps -eo comm,pcpu | sort -rnk 2,2 | head -n 5 | awk '{print $1 "(" $2 "%)"}' | paste -sd ' ' -)
+    write_log "INFO" "Top CPU processes: $TOP_PROCESS"
+    
+}
+check_top_processes
