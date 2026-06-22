@@ -34,7 +34,7 @@ check_cpu() {
     elif [[ $int_CPU_USAGE  -ge 70 && $int_CPU_USAGE  -lt 90 ]]; then
         write_log "WARNING" "CPU usage is $int_CPU_USAGE% — above threshold" 
     else
-    write_log "CRITICAL" "CPU usage is $int_CPU_USAGE% — immediate attention"
+        write_log "CRITICAL" "CPU usage is $int_CPU_USAGE% — immediate attention"
     fi
 
 }
@@ -44,5 +44,13 @@ check_memory() {
     USED_MEM=$(free | grep "Mem" | awk '{print $3}')
     TOTAL_MEM=$(free | grep "Mem" | awk '{print $2}')
     USED_MEM_PCT=$(awk "BEGIN{print ($USED_MEM / $TOTAL_MEM) * 100}")
+    USED_MEM_INT=$(awk "BEGIN{print int($USED_MEM_PCT)}")
+    if [ $USED_MEM_INT -lt 70 ]; then 
+        write_log "INFO" "Memory usage is $USED_MEM_INT% — healthy"
+    elif [[ $USED_MEM_INT -gt 70 && $USED_MEM_INT -lt 90 ]]; then 
+        write_log "WARNING" "Memory usage is $USED_MEM_INT% — above threshold"
+    else
+        write_log "CRITICAL" "CPU usage is $USED_MEM_INT% — immediate attention"
+    fi
 }
 check_memory
