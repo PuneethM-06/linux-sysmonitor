@@ -41,7 +41,7 @@ check_cpu() {
 check_cpu
 
 check_memory() {
-    MEM=$(free | grep "Mem" | awk '{print $3}')
-    echo "$MEM"
+    USED_MEM=$(free | grep "Mem" | awk '{print $3}')
+    TOTAL_MEM=$(free | grep "Mem" | awk '{print $2}')
 }
 check_memory
