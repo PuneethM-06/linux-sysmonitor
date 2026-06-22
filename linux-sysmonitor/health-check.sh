@@ -43,5 +43,6 @@ check_cpu
 check_memory() {
     USED_MEM=$(free | grep "Mem" | awk '{print $3}')
     TOTAL_MEM=$(free | grep "Mem" | awk '{print $2}')
+    USED_MEM_PCT=$(awk "BEGIN{print ($USED_MEM / $TOTAL_MEM) * 100}")
 }
 check_memory
