@@ -103,7 +103,7 @@ check_network () {
 check_network
 
 check_ports (){
-    PORTS=$(ss -tlnp | awk '{print $4}'| awk -F':' '{print $2}')
-    echo "$PORTS"
+    PORTS=$(ss -tlnp | awk '{print $4}'| awk -F':' '{print $2}' | paste -sd ' ' -)
+    write_log "INFO" "Listening ports: $PORTS"
 }
 check_ports
