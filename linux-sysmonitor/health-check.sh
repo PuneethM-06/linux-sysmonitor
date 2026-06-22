@@ -107,3 +107,13 @@ check_ports (){
     write_log "INFO" "Listening ports: $PORTS"
 }
 check_ports
+
+check_syslogs () {
+    if [ -f /var/log/syslog ]; then
+        LOGS=$(tail -n 10 /var/log/syslog)
+    else
+        LOGS=$(journalctl -n 10 --no-pager)
+    fi
+    write_log "INFO" "Recent System logs: $LOGS"
+}
+check_syslogs
