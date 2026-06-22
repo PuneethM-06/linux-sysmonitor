@@ -47,10 +47,10 @@ check_memory() {
     USED_MEM_INT=$(awk "BEGIN{print int($USED_MEM_PCT)}")
     if [ $USED_MEM_INT -lt 70 ]; then 
         write_log "INFO" "Memory usage is $USED_MEM_INT% — healthy"
-    elif [[ $USED_MEM_INT -gt 70 && $USED_MEM_INT -lt 90 ]]; then 
+    elif [[ $USED_MEM_INT -ge 70 && $USED_MEM_INT -lt 90 ]]; then 
         write_log "WARNING" "Memory usage is $USED_MEM_INT% — above threshold"
     else
-        write_log "CRITICAL" "CPU usage is $USED_MEM_INT% — immediate attention"
+        write_log "CRITICAL" "Memory usage is $USED_MEM_INT% — immediate attention"
     fi
 }
 check_memory
