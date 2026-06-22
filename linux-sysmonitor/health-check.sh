@@ -91,11 +91,11 @@ check_top_processes() {
 check_top_processes
 
 check_network () {
-    PING_OUTPUT:$(ping -c 4 8.8.8.8)
-    if $PING_OUTPUT ; then
-        echo "Network OK - latency $PING_OUTPUT" | awk '{print $10}'
+    PING_LATENCY=$(ping -c 4 8.8.8.8 | grep "rtt" | awk '{print $4}' | awk -F'/' '{print $2}')
+    if $PING_LATENCY ; then
+        write_log "INFO" "Network OK - latency $PING_LATENCY"
     else
-        echo "No network connectivity"
+        write_log "CRITICAL" "No network connectivity"
     fi
 }
 check_network
