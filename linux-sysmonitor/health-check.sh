@@ -89,3 +89,12 @@ check_top_processes() {
     
 }
 check_top_processes
+
+check_network () {
+    if ping -c 4 8.8.8.8 ; then
+        echo "Network OK - latency Xms"
+    else
+        echo "No network connectivity"
+    fi
+}
+check_network
