@@ -7,6 +7,7 @@
 set -euo pipefail
 LOGFILE="logs/$(date +"%Y-%m-%d-%H-%M").log"
 
+
 if [ -d logs ]; then
     :
 else
@@ -23,9 +24,18 @@ write_log() {
 write_log "INFO" "TEST MESSAGE" 
 
 check_cpu() {
-    CPUIDLE=$(top -bn1 | grep "Cpu(s)" | awk '{print $8}')
+    CPU_IDLE=$(top -bn1 | grep "Cpu(s)" | awk '{print $8}')
     TOTAL=100
-    CPUUSAGE=$(awk "BEGIN{print $TOTAL - $CPUIDLE}")
+    CPU_USAGE=$(awk "BEGIN{print $TOTAL - $CPU_IDLE}")
+    int_CPU_USAGE=$(awk "BEGIN{print int($CPU_USAGE)}")
+
+    if [ $int_CPU_USAGE -lt 70 ]; then 
+        write_log "INFO" "CPU Usage is $int_CPU_USAGE% - healthy"
+    elif [[ $int_CPU_USAGE  -ge 70 && $int_CPU_USAGE  -le 90 ]]; then
+        write_log "WARNING" "CPU Usage is $int_CPU_USAGE% - above threshold" 
+    else
+    write_log "CRITICAL" "CPU Usage is $int_CPU_USAGE% - immediate attention"
+    fi
 
 }
 check_cpu
