@@ -39,3 +39,7 @@ check_cpu() {
 
 }
 check_cpu
+
+check_memory() {
+    
+}
