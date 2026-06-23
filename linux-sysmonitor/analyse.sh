@@ -18,7 +18,18 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 LOG_DIR="logs/"
+
+if [ ! -d "$LOG_DIR" ]; then
+    echo "Error: logs directory does not exist"
+    exit 1
+fi
 LATEST_LOG=$(ls -t logs| head -n 1)
+
+if [ -z "$LATEST_LOG" ]; then
+    echo "Error: No log files found"
+    exit 1
+fi 
+
 DEFAULT_FILE="$LOG_DIR$LATEST_LOG"
 
 SUMMARY=false
@@ -41,24 +52,51 @@ usage() {
 if [ $# -eq 0 ]; then
     echo " There must be a flag defined"
     usage
+    exit 1
 fi
 
 while [[ $# -gt 0 ]]
 do
     case "$1" in
     --file)
-    FILE=$2
+    if [ $# -lt 2 ]; then 
+        echo "Error: --file requires file name"
+        exit 1
+    fi
+        if [ ! -f "$2" ]; then
+    echo "Error: File not found: $2"
+    exit 1
+    fi
+    
+    DEFAULT_FILE=$2
     shift 2
     ;;
     --level)
-    LEVEL=$2
-    shift 2
+    if [ $# -lt 2 ]; then 
+        echo "Error: --level requires "level""
+        exit 1
+    fi
+    if [[ "$2" == "INFO" || "$2" == "WARNING" || "$2" == "CRITICAL" ]]; then
+        LEVEL=$2
+        shift 2
+    else
+        echo "Error: Invalid level. Use INFO, WARNING, or CRITICAL"
+        exit 1
+    fi
     ;;
     --top)
+    if [ $# -lt 2 ]; then 
+        echo "Error: --top requires number of lines"
+        exit 1
+    fi
     TOP=$2
     shift 2
     ;;
     --since)
+    if [ $# -lt 2 ]; then 
+        echo "Error: --since requires HH:MM"
+        exit 1
+    fi
     SINCE=$2
     shift 2
     ;;
