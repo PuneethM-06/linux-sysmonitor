@@ -41,6 +41,7 @@ usage() {
 if [ $# -eq 0 ]; then
     echo " There must be a flag defined"
     usage
+    exit 1
 fi
 
 while [[ $# -gt 0 ]]
