@@ -42,9 +42,24 @@ do
     FILE=$2
     shift 2
     ;;
+    --level)
+    LEVEL=$2
+    shift 2
+    ;;
+    --top)
+    TOP=$2
+    shift 2
+    ;;
+    --since)
+    SINCE=$2
+    shift 2
+    ;;
     --summary)
     SUMMARY=true
     shift
     ;;
+    --help)
+    HELP=true
+    shift
     esac
 done
