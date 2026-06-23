@@ -62,5 +62,10 @@ do
     HELP=true
     shift
     ;;
+    *)
+    echo "Invalid flag, $1"
+    usage
+    shift
+    ;;
     esac
 done
