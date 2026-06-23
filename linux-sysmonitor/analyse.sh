@@ -21,3 +21,16 @@ LOG_DIR="logs/"
 LATEST_LOG=$(ls -t logs| head -n 1)
 DEFAULT_FILE="$LOG_DIR$LATEST_LOG"
 echo "$LATEST_LOG"
+
+usage() {
+    echo "Usage: ./analyse.sh [OPTIONS]"
+
+    echo "Options:
+  --file <path>
+  --level <INFO|WARNING|CRITICAL>
+  --top <count>
+  --summary
+  --since <timestamp>
+  --help"
+}
+usage
