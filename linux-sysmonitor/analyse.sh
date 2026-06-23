@@ -93,3 +93,8 @@ if [ $LEVEL == INFO ]; then
     INFO_LOGS=$(grep "INFO" $DEFAULT_FILE)
     echo "$INFO_LOGS"
 fi
+
+if [ $LEVEL == WARNING ]; then
+    INFO_LOGS=$(grep "WARNING" $DEFAULT_FILE)
+    echo "$INFO_LOGS"
+fi
