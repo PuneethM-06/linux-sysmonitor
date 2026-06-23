@@ -20,7 +20,6 @@ NC='\033[0m'
 LOG_DIR="logs/"
 LATEST_LOG=$(ls -t logs| head -n 1)
 DEFAULT_FILE="$LOG_DIR$LATEST_LOG"
-echo "$LATEST_LOG"
 
 usage() {
     echo "Usage: ./analyse.sh [OPTIONS]"
@@ -33,7 +32,7 @@ usage() {
   --since <timestamp>
   --help"
 }
-usage
+
 
 while [[ $# -gt 0 ]]
 do
@@ -69,3 +68,8 @@ do
     ;;
     esac
 done
+
+if [ $# -eq 0 ]; then
+    echo " There must be a flag defined"
+    usage
+fi
