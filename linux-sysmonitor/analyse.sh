@@ -11,3 +11,8 @@ set -euo pipefail
 #   --summary
 #   --since <timestamp>
 #   --help
+
+RED='\033[1;31m'
+YELLOW='\033[33m'
+GREEN='\033[0;32m'
+NC='\033[0m'
