@@ -16,3 +16,8 @@ RED='\033[1;31m'
 YELLOW='\033[33m'
 GREEN='\033[0;32m'
 NC='\033[0m'
+
+LOG_DIR="logs/"
+LATEST_LOG=$(ls -t logs| head -n 1)
+DEFAULT_FILE="$LOG_DIR$LATEST_LOG"
+echo "$LATEST_LOG"
