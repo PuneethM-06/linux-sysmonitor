@@ -137,6 +137,12 @@ print_summary() {
     echo "========================================="
     echo "Log File: $LOGFILE"
     echo "Total Entries:" $(wc -l $LOGFILE)
+    echo "INFO:" $(grep  "INFO" $LOGFILE | wc -l)
+    echo "WARNING:" $(grep  "WARNING" $LOGFILE | wc -l)
+    echo "CRITICAL:" $(grep  "CRITICAL" $LOGFILE | wc -l)
+    echo "========================================="
+    echo "         Health Check Complete.       "
+    echo "========================================="
 
 }
 print_summary
