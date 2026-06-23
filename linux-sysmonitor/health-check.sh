@@ -135,6 +135,8 @@ print_summary() {
     echo "========================================="
     echo "         Linux SysMonitor Summary.       "
     echo "========================================="
+    echo "Log File: $LOGFILE"
+    echo "Total Entries:" $(wc -l $LOGFILE)
 
 }
 print_summary
