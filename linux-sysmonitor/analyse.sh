@@ -60,8 +60,13 @@ do
         echo "Error: --level requires "level""
         exit 1
     fi
-    LEVEL=$2
-    shift 2
+    if [[ "$2" == "INFO" || "$2" == "WARNING" || "$2" == "CRITICAL" ]]; then
+        LEVEL=$2
+        shift 2
+    else
+        echo "Error: Invalid flag"
+        exit 1
+    fi
     ;;
     --top)
     if [ $# -lt 2 ]; then 
