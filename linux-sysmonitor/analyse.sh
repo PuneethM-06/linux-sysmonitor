@@ -33,6 +33,10 @@ usage() {
   --help"
 }
 
+if [ $# -eq 0 ]; then
+    echo " There must be a flag defined"
+    usage
+fi
 
 while [[ $# -gt 0 ]]
 do
@@ -58,7 +62,7 @@ do
     shift
     ;;
     --help)
-    HELP=true
+    usage
     shift
     ;;
     *)
@@ -68,8 +72,3 @@ do
     ;;
     esac
 done
-
-if [ $# -eq 0 ]; then
-    echo " There must be a flag defined"
-    usage
-fi
