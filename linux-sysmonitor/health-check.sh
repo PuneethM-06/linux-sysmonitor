@@ -130,3 +130,11 @@ check_uptime() {
     
 }
 check_uptime
+
+print_summary() {
+    echo "========================================="
+    echo "         Linux SysMonitor Summary.       "
+    echo "========================================="
+
+}
+print_summary
