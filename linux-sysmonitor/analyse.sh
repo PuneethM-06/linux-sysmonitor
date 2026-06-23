@@ -18,7 +18,18 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 LOG_DIR="logs/"
+
+if [ ! -d "$LOG_DIR" ]; then
+    echo "Error: logs directory does not exist"
+    exit 1
+fi
 LATEST_LOG=$(ls -t logs| head -n 1)
+
+if [ -z "$LATEST_LOG" ]; then
+    echo "Error: No log files found"
+    exit 1
+fi 
+
 DEFAULT_FILE="$LOG_DIR$LATEST_LOG"
 
 SUMMARY=false

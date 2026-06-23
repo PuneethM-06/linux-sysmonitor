@@ -1,0 +1,11 @@
+2026-06-23 05:05:52 | INFO | TEST MESSAGE
+2026-06-23 05:05:52 | INFO | CPU usage is 10% — healthy
+2026-06-23 05:05:52 | INFO | Memory usage is 28% — healthy
+2026-06-23 05:05:52 | INFO | Disk usage is 33% — healthy
+2026-06-23 05:05:52 | INFO | sshd is running
+2026-06-23 05:05:52 | WARNING | cron is not running
+2026-06-23 05:05:52 | INFO | Top CPU processes: MainThread(3.0%) MainThread(0.3%) MainThread(0.1%) sshd(0.0%) sort(0.0%)
+2026-06-23 05:05:52 | INFO | Listening ports:  36045 2000 2222 16635 16634 12563 13005 53 33629    
+2026-06-23 05:05:52 | INFO | Recent System logs: -- No entries --
+2026-06-23 05:05:52 | INFO | Load Average (1m/5m/15m): 1.43 / 0.99 / 0.83
+2026-06-23 05:05:52 | INFO | System uptime: up 47 minutes
