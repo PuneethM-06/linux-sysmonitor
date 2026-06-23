@@ -72,3 +72,14 @@ do
     ;;
     esac
 done
+
+if [ $SUMMARY == true ]; then
+    echo "================================="
+    echo "Log Summary"
+    echo "================================="
+    echo "Total Entries:" $(wc -l $DEFAULT_FILE | awk '{print $1}')
+    echo "INFO:" $(grep "INFO" $DEFAULT_FILE | wc -l )
+    echo "WARNING:" $(grep "WARNING" $DEFAULT_FILE | wc -l )
+    echo "CRITICAL:" $(grep "CRITICAL" $DEFAULT_FILE | wc -l )
+    echo "================================="
+fi
