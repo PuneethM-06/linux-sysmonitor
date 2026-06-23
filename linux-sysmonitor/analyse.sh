@@ -105,3 +105,14 @@ fi
 if [ $TOP -ne 0 ]; then 
    awk -F '|' '{print $3}' $DEFAULT_FILE| sort | uniq -c | sort -rn | head -n $TOP
 fi
+
+SINCE_SECONDS=$(echo "$SINCE" | awk -F ':' '{print ($1 * 3600) + ($2 * 60)}')
+while read line
+do
+    TIME=$(echo "$line" | awk -F '|' '{print $1}' | awk '{print $2}')
+    TIME_SECONDS=$(echo "$TIME" | awk -F ':' '{print ($1 * 3600) + ($2 * 60)}')
+
+    if [[ $TIME_SECONDS -gt $SINCE_SECONDS ]]; then
+        echo "$line"
+    fi
+done < $DEFAULT_FILE
