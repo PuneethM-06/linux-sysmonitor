@@ -34,3 +34,17 @@ usage() {
   --help"
 }
 usage
+
+while [[ $# -gt 0 ]]
+do
+    case "$1" in
+    --file)
+    FILE=$2
+    shift 2
+    ;;
+    --summary)
+    SUMMARY=true
+    shift
+    ;;
+    esac
+done
