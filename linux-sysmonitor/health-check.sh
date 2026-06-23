@@ -100,7 +100,7 @@ check_network () {
         write_log "CRITICAL" "No network connectivity"
     fi
 }
-check_network
+#check_network
 
 check_ports (){
     PORTS=$(ss -tlnp | awk '{print $4}'| awk -F':' '{print $2}' | paste -sd ' ' -)
@@ -117,3 +117,16 @@ check_syslogs () {
     write_log "INFO" "Recent System logs: $LOGS"
 }
 check_syslogs
+
+check_uptime() {
+    LOAD_AVG=$(cat /proc/loadavg)
+    LOAD_1=$(echo "$LOAD_AVG" | awk '{print $1}')
+    LOAD_5=$(echo "$LOAD_AVG" | awk '{print $2}')
+    LOAD_15=$(echo "$LOAD_AVG" | awk '{print $3}')
+    write_log "INFO" "Load Average (1m/5m/15m): $LOAD_1 / $LOAD_5 / $LOAD_15"
+
+    UPTIME=$(uptime -p)
+    write_log "INFO" "System uptime: $UPTIME"
+    
+}
+check_uptime
