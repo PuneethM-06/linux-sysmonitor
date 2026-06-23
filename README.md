@@ -1,4 +1,4 @@
-# 🚀 Linux SysMonitor
+#  Linux SysMonitor
 
 A Bash-based Linux monitoring and log analysis tool designed to monitor system health, generate structured logs, and provide powerful log analysis capabilities.
 
@@ -6,7 +6,7 @@ Built as a hands-on DevOps learning project covering Linux administration, Bash 
 
 ---
 
-## 📑 Table of Contents
+##  Table of Contents
 
 * [Overview](#-overview)
 * [Features](#-features)
@@ -22,8 +22,7 @@ Built as a hands-on DevOps learning project covering Linux administration, Bash 
 * [Future Improvements](#-future-improvements)
 
 ---
-
-# 🎯 Overview
+#  Overview
 
 Linux SysMonitor performs automated health checks on a Linux system and stores results in structured log files.
 
@@ -39,9 +38,9 @@ This project was built to strengthen practical Linux and DevOps skills through r
 
 ---
 
-# ✨ Features
+#  Features
 
-## 🖥️ Health Monitoring
+##  Health Monitoring
 
 * CPU Usage Monitoring
 * Memory Usage Monitoring
@@ -54,7 +53,7 @@ This project was built to strengthen practical Linux and DevOps skills through r
 * Load Average Monitoring
 * System Uptime Monitoring
 
-## 📊 Log Analysis
+##  Log Analysis
 
 * Summary Reports
 * Severity-Based Filtering
@@ -67,7 +66,7 @@ This project was built to strengthen practical Linux and DevOps skills through r
 
 ---
 
-# 🏗️ Architecture
+#  Architecture
 
 ```text
 +-------------------+
@@ -93,7 +92,7 @@ Summary      Filtering  Top Issues
 
 ---
 
-# 📂 Project Structure
+#  Project Structure
 
 ```text
 linux-sysmonitor/
@@ -113,7 +112,7 @@ linux-sysmonitor/
 
 ---
 
-# ⚙️ Installation
+#  Installation
 
 ## Clone the Repository
 
@@ -171,7 +170,7 @@ Example:
 
 ---
 
-# 🔍 Log Analysis
+#  Log Analysis
 
 ## Generate Summary Report
 
@@ -258,7 +257,7 @@ Example:
 
 ---
 
-# 🛡️ Validation & Error Handling
+#  Validation & Error Handling
 
 Linux SysMonitor includes validation for:
 
@@ -338,7 +337,7 @@ sample-output/analysis-summary.png
 
 ---
 
-# 🧪 Validation Commands
+#  Validation Commands
 
 Generate a new log file:
 
@@ -372,7 +371,7 @@ Display entries after a specific time:
 
 ---
 
-# 🔧 Troubleshooting
+#  Troubleshooting
 
 ## Permission Denied
 
@@ -419,7 +418,7 @@ shellcheck analyse.sh
 
 ---
 
-# 🛠️ Technologies Used
+#  Technologies Used
 
 | Category        | Tools                  |
 | --------------- | ---------------------- |
@@ -433,7 +432,7 @@ shellcheck analyse.sh
 
 ---
 
-# 🎓 What I Learned
+#  What I Learned
 
 Through this project I gained hands-on experience with:
 
@@ -455,7 +454,7 @@ Through this project I gained hands-on experience with:
 
 ---
 
-# 🚀 Future Improvements
+# Future Improvements
 
 * Email Alerts
 * Slack Notifications
@@ -470,13 +469,13 @@ Through this project I gained hands-on experience with:
 
 ---
 
-# 📜 License
+#  License
 
 This project is intended for learning, experimentation, and portfolio demonstration purposes.
 
 ---
 
-## ⭐ Support
+##  Support
 
 If you found this project useful, consider starring the repository and sharing feedback.
 
