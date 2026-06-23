@@ -56,7 +56,7 @@ do
     shift 2
     ;;
     --level)
-    if [ $# -lt 2]; then 
+    if [ $# -lt 2 ]; then 
         echo "Error: --level requires "level""
         exit 1
     fi
@@ -72,7 +72,7 @@ do
     shift 2
     ;;
     --since)
-    if [ $# -lt 2]; then 
+    if [ $# -lt 2 ]; then 
         echo "Error: --since requires HH:MM"
         exit 1
     fi
