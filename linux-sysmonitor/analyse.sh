@@ -63,6 +63,11 @@ do
         echo "Error: --file requires file name"
         exit 1
     fi
+        if [ ! -f "$2" ]; then
+    echo "Error: File not found: $2"
+    exit 1
+    fi
+    
     DEFAULT_FILE=$2
     shift 2
     ;;
@@ -75,7 +80,7 @@ do
         LEVEL=$2
         shift 2
     else
-        echo "Error: Invalid flag"
+        echo "Error: Invalid level. Use INFO, WARNING, or CRITICAL"
         exit 1
     fi
     ;;
