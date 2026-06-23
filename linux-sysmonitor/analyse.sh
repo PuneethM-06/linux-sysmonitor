@@ -78,8 +78,8 @@ if [ $SUMMARY == true ]; then
     echo "Log Summary"
     echo "================================="
     echo "Total Entries:" $(wc -l $DEFAULT_FILE | awk '{print $1}')
-    echo "INFO:" $(grep "INFO" $DEFAULT_FILE | wc -l )
-    echo "WARNING:" $(grep "WARNING" $DEFAULT_FILE | wc -l )
-    echo "CRITICAL:" $(grep "CRITICAL" $DEFAULT_FILE | wc -l )
+    echo -e "${GREEN}INFO: $(grep "INFO" $DEFAULT_FILE | wc -l )${NC}"
+    echo -e "${YELLOW}WARNING: $(grep "WARNING" $DEFAULT_FILE | wc -l )${NC}"
+    echo -e "${RED}CRITICAL: $(grep "CRITICAL" $DEFAULT_FILE | wc -l )${NC}"
     echo "================================="
 fi
