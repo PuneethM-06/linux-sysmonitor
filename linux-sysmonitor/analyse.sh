@@ -48,18 +48,34 @@ while [[ $# -gt 0 ]]
 do
     case "$1" in
     --file)
+    if [ $# -lt 2 ]; then 
+        echo "Error: --file requires file name"
+        exit 1
+    fi
     FILE=$2
     shift 2
     ;;
     --level)
+    if [ $# -lt 2]; then 
+        echo "Error: --level requires "level""
+        exit 1
+    fi
     LEVEL=$2
     shift 2
     ;;
     --top)
+    if [ $# -lt 2 ]; then 
+        echo "Error: --top requires number of lines"
+        exit 1
+    fi
     TOP=$2
     shift 2
     ;;
     --since)
+    if [ $# -lt 2]; then 
+        echo "Error: --since requires HH:MM"
+        exit 1
+    fi
     SINCE=$2
     shift 2
     ;;
