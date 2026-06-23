@@ -21,6 +21,11 @@ LOG_DIR="logs/"
 LATEST_LOG=$(ls -t logs| head -n 1)
 DEFAULT_FILE="$LOG_DIR$LATEST_LOG"
 
+SUMMARY=false
+LEVEL=""
+TOP=0
+SINCE=""
+
 usage() {
     echo "Usage: ./analyse.sh [OPTIONS]"
 
@@ -72,3 +77,42 @@ do
     ;;
     esac
 done
+
+if [ $SUMMARY == true ]; then
+    echo "================================="
+    echo "Log Summary"
+    echo "================================="
+    echo "Total Entries:" $(wc -l $DEFAULT_FILE | awk '{print $1}')
+    echo -e "${GREEN}INFO: $(grep "INFO" $DEFAULT_FILE | wc -l )${NC}"
+    echo -e "${YELLOW}WARNING: $(grep "WARNING" $DEFAULT_FILE | wc -l )${NC}"
+    echo -e "${RED}CRITICAL: $(grep "CRITICAL" $DEFAULT_FILE | wc -l )${NC}"
+    echo "================================="
+fi
+
+if [[ $LEVEL != "" && $LEVEL == INFO ]]; then
+    INFO_LOGS=$(grep "INFO" $DEFAULT_FILE)
+    echo -e "${GREEN}$INFO_LOGS${NC}"
+
+elif [[ $LEVEL != "" && $LEVEL == WARNING ]]; then
+    INFO_LOGS=$(grep "WARNING" $DEFAULT_FILE)
+    echo -e "${YELLOW}$INFO_LOGS${NC}"
+
+elif [[ $LEVEL != "" && $LEVEL == CRITICAL ]]; then 
+    INFO_LOGS=$(grep "CRITICAL" $DEFAULT_FILE)
+    echo -e "${RED}$INFO_LOGS${NC}"
+fi
+
+if [ $TOP -ne 0 ]; then 
+   awk -F '|' '{print $3}' $DEFAULT_FILE| sort | uniq -c | sort -rn | head -n $TOP
+fi
+
+SINCE_SECONDS=$(echo "$SINCE" | awk -F ':' '{print ($1 * 3600) + ($2 * 60)}')
+while read line
+do
+    TIME=$(echo "$line" | awk -F '|' '{print $1}' | awk '{print $2}')
+    TIME_SECONDS=$(echo "$TIME" | awk -F ':' '{print ($1 * 3600) + ($2 * 60)}')
+
+    if [[ $TIME_SECONDS -gt $SINCE_SECONDS ]]; then
+        echo "$line"
+    fi
+done < $DEFAULT_FILE
