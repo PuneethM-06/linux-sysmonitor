@@ -91,14 +91,14 @@ fi
 
 if [ $LEVEL == INFO ]; then
     INFO_LOGS=$(grep "INFO" $DEFAULT_FILE)
-    echo "$INFO_LOGS"
+    echo -e "${GREEN}$INFO_LOGS${NC}"
 
 elif [ $LEVEL == WARNING ]; then
     INFO_LOGS=$(grep "WARNING" $DEFAULT_FILE)
-    echo "$INFO_LOGS"
+    echo -e "${YELLOW}$INFO_LOGS${NC}"
 
 else 
     
     INFO_LOGS=$(grep "CRITICAL" $DEFAULT_FILE)
-    echo "$INFO_LOGS"
+    echo -e "${RED}$INFO_LOGS${NC}"
 fi
