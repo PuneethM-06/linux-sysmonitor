@@ -1,10 +1,5 @@
 # 🚀 Linux SysMonitor
 
-![Bash](https://img.shields.io/badge/Bash-Scripting-green)
-![Linux](https://img.shields.io/badge/Linux-Monitoring-blue)
-![DevOps](https://img.shields.io/badge/DevOps-Project-orange)
-![Status](https://img.shields.io/badge/Status-Completed-success)
-
 A Bash-based Linux monitoring and log analysis tool designed to monitor system health, generate structured logs, and provide powerful log analysis capabilities.
 
 Built as a hands-on DevOps learning project covering Linux administration, Bash scripting, troubleshooting, automation, and log management.
