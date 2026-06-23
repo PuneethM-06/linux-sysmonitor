@@ -23,7 +23,7 @@ DEFAULT_FILE="$LOG_DIR$LATEST_LOG"
 
 SUMMARY=false
 LEVEL=""
-TOP=""
+TOP=0
 SINCE=""
 
 usage() {
@@ -89,16 +89,19 @@ if [ $SUMMARY == true ]; then
     echo "================================="
 fi
 
-if [ $LEVEL == INFO ]; then
+if [[ $LEVEL != "" && $LEVEL == INFO ]]; then
     INFO_LOGS=$(grep "INFO" $DEFAULT_FILE)
     echo -e "${GREEN}$INFO_LOGS${NC}"
 
-elif [ $LEVEL == WARNING ]; then
+elif [[ $LEVEL != "" && $LEVEL == WARNING ]]; then
     INFO_LOGS=$(grep "WARNING" $DEFAULT_FILE)
     echo -e "${YELLOW}$INFO_LOGS${NC}"
 
-else 
-    
+elif [[ $LEVEL != "" && $LEVEL == CRITICAL ]]; then 
     INFO_LOGS=$(grep "CRITICAL" $DEFAULT_FILE)
     echo -e "${RED}$INFO_LOGS${NC}"
+fi
+
+if [ $TOP -ne 0 ]; then 
+   awk -F '|' '{print $3}' $DEFAULT_FILE| sort | uniq -c | sort -rn | head -n $TOP
 fi
