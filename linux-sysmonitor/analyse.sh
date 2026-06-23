@@ -52,7 +52,7 @@ do
         echo "Error: --file requires file name"
         exit 1
     fi
-    FILE=$2
+    DEFAULT_FILE=$2
     shift 2
     ;;
     --level)
