@@ -21,6 +21,11 @@ LOG_DIR="logs/"
 LATEST_LOG=$(ls -t logs| head -n 1)
 DEFAULT_FILE="$LOG_DIR$LATEST_LOG"
 
+SUMMARY=false
+LEVEL=""
+TOP=""
+SINCE=""
+
 usage() {
     echo "Usage: ./analyse.sh [OPTIONS]"
 
@@ -82,4 +87,9 @@ if [ $SUMMARY == true ]; then
     echo -e "${YELLOW}WARNING: $(grep "WARNING" $DEFAULT_FILE | wc -l )${NC}"
     echo -e "${RED}CRITICAL: $(grep "CRITICAL" $DEFAULT_FILE | wc -l )${NC}"
     echo "================================="
+fi
+
+if [ $LEVEL == INFO ]; then
+    INFO_LOGS=$(grep "INFO" $DEFAULT_FILE)
+    echo "$INFO_LOGS"
 fi
