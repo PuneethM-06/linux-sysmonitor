@@ -61,5 +61,6 @@ do
     --help)
     HELP=true
     shift
+    ;;
     esac
 done
